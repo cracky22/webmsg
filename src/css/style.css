@@ -1,0 +1,119 @@
+/* Hintergrundfarbe */
+div.mdl-layout__header-row,
+div.mdl-layout__drawer-button,
+header.mdl-layout__header,
+header.is-casting-shadow {
+  background-color: #13525e;
+}
+
+/* Eingabefeldcontainer */
+div.cpinp {
+  width: 342px;
+  max-width: 90%;
+}
+
+/* Löschen-Button */
+button.clear {
+  float: right;
+  font-weight: bold;
+  height: 35px !important;
+  width: 80px !important;
+  -webkit-tap-highlight-color: transparent; /* Touch-Highlight deaktivieren */
+}
+
+/* Textarea Styles */
+textarea.inputfield {
+  height: 210px;
+  max-width: 100%;
+  border: 2.5px solid rgb(63, 81, 181);
+  border-radius: 8px;
+  font-weight: bold;
+  outline: none;
+  padding: 3px;
+  resize: none;
+  -webkit-resize: none; /* Sicherstellen, dass resize funktioniert */
+  -webkit-transition: border 0.2s;
+}
+
+textarea:focus {
+  border: 2.5px solid rgb(88, 109, 228) !important;
+}
+
+textarea.inputstyle {
+  transition: 0.2s;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+textarea.disabled {
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  border: 2.5px solid #585858 !important;
+}
+
+/* Allgemeine Button Styles */
+button.mdl-button {
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Kopieren-Button */
+button.copy {
+  margin-top: 5px;
+}
+
+/* Kill-Button */
+button.kill {
+  background-color: rgb(205, 50, 84) !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1.5px solid black;
+  width: 20px !important;
+  float: right;
+  margin-right: 10px;
+}
+
+/* Menü-Button */
+button.menub {
+  margin-top: 5px;
+  max-width: 75%;
+  padding-left: 15px;
+  margin-left: 15px;
+}
+
+/* Titel */
+span.mdl-layout-title {
+  font-weight: bold;
+}
+span.mdl-switch__label {
+  font-weight: bold;
+}
+
+/* Update Header */
+h4.updateheader {
+  max-width: 80%;
+  border-radius: 25px;
+}
+
+.rb {
+  background-image: linear-gradient(
+    to left,
+    violet,
+    rgb(107, 21, 168),
+    rgb(49, 49, 255),
+    green,
+    rgb(252, 252, 29),
+    orange,
+    red
+  );
+}
+
+h5.changelog {
+  background-color: #416b3c54;
+  max-width: 90%;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-top: 8px;
+  padding-bottom: 2px;
+}

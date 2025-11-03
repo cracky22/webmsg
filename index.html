@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="public, max-age=3600">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>msg.web</title>
+    <link rel="shortcut icon" href="./src/img/favicon.png" type="image/x-icon">
+    <!--Material Design-->
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/crypto_engine.js"></script>
+</head>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .vhidden {
+        visibility: hidden;
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .inactive {
+        pointer-events: none;
+    }
+
+    div.activatePrompt {
+        color: #b2b2b2;
+        background-color: #454545;
+    }
+
+    .button {
+        background-color: #153454;
+        -webkit-tap-highlight-color: transparent;
+        border-radius: 4px;
+        height: 40px;
+        width: 100px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .mdl-switch {
+        -webkit-transform: scale(1.45) !important;
+        transform: scale(1.45) !important;
+        margin-top: 5.8px !important;
+    }
+
+    button.checkbox {
+        background: none !important;
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    .color-changing-div {
+        -webkit-animation: blink 1.5s infinite alternate;
+        animation: blink 1.5s infinite alternate;
+    }
+
+    .clearAnim {
+        -webkit-animation: blink 0.5s infinite alternate;
+        animation: blink 0.5s infinite alternate;
+    }
+
+    @-webkit-keyframes blink {
+        0% {
+            background-color: #36383b !important;
+        }
+
+        100% {
+            background-color: #4ca5ff !important;
+        }
+    }
+
+    @keyframes blink {
+        0% {
+            background-color: #36383b !important;
+        }
+
+        100% {
+            background-color: #4ca5ff !important;
+        }
+    }
+
+    .errPrompt {
+        background-color: #252525;
+    }
+</style>
+
+<body onload="sessionStorage.setItem('ctc', '0')">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title" id="masterTitle">
+                    msg.web
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <a class="mdl-navigation__link" id="settings" onclick="settings();"><i
+                        class="material-icons">settings</i></a>
+                <a class="mdl-navigation__link" id="home" onclick="index();"><i class="material-icons">home</i></a>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title" id="menuTitle">Menü</span>
+            <nav class="mdl-navigation">
+                <button onclick="settings();" id="settingsButton" style="color: #0a84ff!important;"
+                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    Einstellungen
+                </button>
+                <button onclick="index();" id="homeButton" style="color: #0a84ff!important;"
+                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    HOME
+                </button>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div id="p1" class="mdl-progress mdl-js-progress" style="visibility: hidden; width: 100%;"></div>
+            <div class="page-content">
+                <script id="localScript0"></script>
+                <script id="localScript1"></script>
+                <script id="localScript2"></script>
+                <script id="localScript3"></script>
+                <script id="localScript4"></script>
+                <script id="localScript5"></script>
+                <script id="localScript6"></script>
+                <script id="localScript7"></script>
+                <script id="localScript8"></script>
+                <script id="localScript9"></script>
+                <center>
+                    <div id="index.html" class="section">
+                        <div id="activatePrompt"></div><br><br>
+                        <!--hauptcontent von msg-->
+                        <div class="cpinp">
+                            <button onclick="do_cleanup();" id="clearButton" style="color: #0a84ff!important;"
+                                class="clear button">
+                                clear
+                            </button>
+                            <br><br>
+                            <center>
+                                <textarea type="text" id="inputfield" class="inputfield mdl-textfield__input"
+                                    onclick="document.getElementById('p1').style.visibility = 'visible';"
+                                    style="border: 2px solid #0a84ff;"
+                                    placeholder="Z0FBQUFBQm1wZzNiT2d6Z0gzdHZjZGFtMFdVbnhNUEJoSjVOOHA3TDZFQy1aMmlkRXdtLW50VDMwWnZUbmF1SmZOYnQ5UGlVSFVKc1JGTVBDMlJKT2hTdWxuWnhyWGRRZ2c9PQ=="
+                                    required></textarea>
+                            </center>
+                        </div>
+                        <br><br>
+
+                        <button onclick="encrypt_message();" id="encrypt_button"
+                            style="background-color: #0a84ff!important; color: white!important;" class="button">
+                            encrypt
+                        </button>
+                        <button onclick="decrypt_message();" id="decrypt_button"
+                            style="background-color: #0a84ff!important; color: white!important;" class="button">
+                            decrypt
+                        </button>
+                        <br>
+                    </div>
+                    <div id="settings.html" class="section hidden">
+                        <!--einstellungen für USER-->
+                        <br><br><br><br><br><br><br>
+                        <button onclick="save_autoclear();" id="autoclear-button" class="checkbox"
+                            style="all: unset; margin-top: 8px;">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="auto-clear">
+                                <input type="checkbox" id="auto-clear" class="mdl-switch__input" checkbox>
+                                <span class="mdl-switch__label" id="autoclearLabel">
+                                    autoclear&NonBreakingSpace;&nbsp;
+                                </span>
+                            </label>
+                        </button>
+                        <br>
+                        <button onclick="save_darkmode();" id="autoclear-button" class="checkbox"
+                            style="all: unset; margin-top: 8px;">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="darkmode">
+                                <input type="checkbox" id="darkmode" class="mdl-switch__input" checkbox>
+                                <span class="mdl-switch__label" id="darkmodeLabel">
+                                    Darkmode
+                                </span>
+                            </label>
+                        </button>
+                        <br><br>
+                    </div>
+                </center>
+
+
+                <script>
+                    //darkmode styling
+                    if (localStorage.getItem("darkmode") === "true") {
+                        document.body.style.backgroundColor = localStorage.getItem("darkmodeBackground");
+                        document.body.style.color = "white";
+
+                        menu = document.querySelector("div.mdl-layout__drawer");
+                        menu.style.backgroundColor = localStorage.getItem("darkmodeBackground");
+                        menu.style.color = "white";
+
+                        inputField = document.querySelector("textarea#inputfield.inputfield");
+                        if (inputField) {
+                            inputField.style.backgroundColor = localStorage.getItem("darkmodeBackground");
+                            inputField.style.color = "white";
+                            inputField.style.borderColor = "#0a84ff";
+                        }
+
+                        disabled_inputField = document.querySelector("textarea.disabled");
+                        if (disabled_inputField) {
+                            disabled_inputField.style.backgroundColor = "#2e2e2e";
+                        }
+
+                        locked_buttons = document.querySelectorAll("button.wortcode");
+                        locked_buttons.forEach(function (locked_button) {
+                            locked_button.style.backgroundColor = "#424242";
+                            locked_button.style.color = "white";
+                            locked_button.style.borderColor = "white";
+                        });
+
+                        checkbox = document.querySelectorAll("button.checkbox");
+                        checkbox.forEach(function (checkbox) {
+                            checkbox.style.color = "white";
+                        });
+
+                        header = document.querySelectorAll("h3.header");
+                        header.forEach(function (header) {
+                            header.style.backgroundColor = "rgb(65, 110, 124)";
+                        });
+                        header = document.querySelectorAll("h4.header");
+                        header.forEach(function (header) {
+                            header.style.backgroundColor = "rgb(65, 110, 124)";
+                        });
+                    } else {
+                        disabled_inputField = document.querySelector("textarea.disabled[disabled]");
+                        if (disabled_inputField) {
+                            disabled_inputField.style.backgroundColor = "#7a7a7a7a";
+                        }
+
+                        inputField = document.querySelector("textarea.inputfield");
+                        if (inputField) {
+                            inputField.style.backgroundColor = "rgb(230, 230, 230)";
+                        }
+
+                        header = document.querySelectorAll("h3.header");
+                        header.forEach(function (header) {
+                            header.style.backgroundColor = "#e0e0e0";
+                        });
+                        header = document.querySelectorAll("h4.header");
+                        header.forEach(function (header) {
+                            header.style.backgroundColor = "#e0e0e0";
+                        });
+                    }
+                </script>
+
+                <!--index-->
+                <script>
+                    function isMobilePhone() {
+                        return /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
+                    }
+                    if (!isMobilePhone()) {
+                        if (sessionStorage.getItem("dev") !== "true") {
+                            window.location.href = "https://cracky.ddns.net/msg-encrypt/";
+                        }
+                    }
+                    document.getElementById("home").style.display = 'none';
+                    document.getElementById("homeButton").style.display = 'none';
+
+                    if (localStorage.getItem("rVal") !== "set") {
+                        localStorage.setItem("rVal", "set");
+                        localStorage.setItem("autoclear", "false");
+                        localStorage.setItem("Darkmode", "true");
+                        localStorage.setItem("darkmodeBackground", "#25282b");
+                    }
+
+                    function settings() {
+                        document.getElementById("settings.html").classList.remove("hidden");
+                        document.getElementById("index.html").classList.add("hidden");
+                        document.getElementById("settingsButton").style.display = 'none';
+                        document.getElementById("homeButton").style.display = 'block';
+                        document.getElementById("settings").style.display = 'none';
+                        document.getElementById("home").style.display = 'block';
+                        document.getElementById("masterTitle").innerText = 'Einstellungen';
+                    }
+                    function index() {
+                        document.getElementById("settings.html").classList.add("hidden");
+                        document.getElementById("index.html").classList.remove("hidden");
+                        document.getElementById("homeButton").style.display = 'none';
+                        document.getElementById("settingsButton").style.display = 'block';
+                        document.getElementById("home").style.display = 'none';
+                        document.getElementById("settings").style.display = 'block';
+                        document.getElementById("masterTitle").innerText = 'msg.web';
+                    }
+
+                    if (localStorage.getItem("user") === "DEVELOPER") {
+                        document.addEventListener("visibilitychange", function () {
+                            if (document.hidden) {
+                                disableElements();
+
+                            } else if (!document.hidden) {
+                                document.getElementById('p1').classList.add('mdl-progress__indeterminate');
+                                document.getElementById('p1').style.visibility = 'visible';
+                                enableDisabledElements();
+                                checkInternetConnection('https://cracky.ddns.net/?checkConnectionStatus');
+                            }
+                        });
+                    }
+
+                    function enableDisabledElements() {
+                        const elements = document.querySelectorAll('button:disabled, textarea:disabled');
+                        elements.forEach(element => {
+                            element.disabled = false;
+                        });
+                        inputfield = document.getElementById("inputfield");
+                        inputfield.classList.add("inputstyle");
+                        inputfield.classList.remove("disabled");
+                        document.getElementById('p1').style.visibility = 'hidden';
+                        document.getElementById('p1').classList.remove('mdl-progress__indeterminate');
+                    }
+
+                    function disableElements() {
+                        const elements = document.querySelectorAll('button:disabled, textarea:disabled');
+                        elements.forEach(element => {
+                            element.disabled = true;
+                        });
+                        inputfield = document.getElementById("inputfield");
+                        inputfield.classList.remove("inputstyle");
+                        inputfield.classList.add("disabled");
+                    }
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var textarea = document.getElementById("inputfield");
+                        textarea.addEventListener("keydown", function (event) {
+                            if (event.key === "Enter" || event.keyCode === 13) {
+                                event.preventDefault();
+                            }
+                        });
+                    });
+                </script>
+
+                <!--settings-->
+                <script>
+                    function save_autoclear() {
+                        document.getElementById("p1").style.visibility = 'visible';
+                        setProgress(100);
+                        var checkboxACL = document.getElementById("auto-clear");
+                        localStorage.setItem("autoclear", checkboxACL.checked);
+                        setTimeout(() => {
+                            setProgress(0);
+                            document.getElementById("p1").style.visibility = 'hidden';
+                        }, 180);
+                    }
+                    let checkedACL = JSON.parse(localStorage.getItem("autoclear"));
+                    document.getElementById("auto-clear").checked = checkedACL;
+
+                    function save_darkmode() {
+                        document.getElementById("p1").style.visibility = 'visible';
+                        setProgress(100);
+                        var darkmode = document.getElementById("darkmode");
+                        localStorage.setItem("darkmode", darkmode.checked);
+                        setTimeout(() => {
+                            setProgress(0);
+                            document.getElementById("p1").style.visibility = 'hidden';
+                            location.reload();
+                        }, 180);
+                    }
+                    let darkmode = JSON.parse(localStorage.getItem("darkmode"));
+                    document.getElementById("darkmode").checked = darkmode;
+
+                    function setProgress(progress) {
+                        document.getElementById("p1").style.visibility = 'visible';
+                        var progressBar = document.querySelector('#p1');
+                        if (progressBar && progressBar.MaterialProgress) {
+                            progressBar.MaterialProgress.setProgress(progress);
+                        }
+                    }
+                </script>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
