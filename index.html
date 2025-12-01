@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./src/mdl/mdl-style.css">
     <script src="./src/mdl/mdl-script.js"></script>
     <script src="./src/js/crypto_engine.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@material/web/all.js/+esm"></script>
 </head>
 
 <style>
@@ -164,28 +165,24 @@
                         </button>
                         <br>
                     </div>
-                    <div id="settings.html" class="section hidden">
+                    <div id="settings.html" class="settings section hidden">
                         <!--einstellungen für USER-->
                         <br><br><br><br><br><br><br>
-                        <button onclick="save_autoclear();" id="autoclear-button" class="checkbox"
-                            style="all: unset; margin-top: 8px;">
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="auto-clear">
-                                <input type="checkbox" id="auto-clear" class="mdl-switch__input" checkbox>
-                                <span class="mdl-switch__label" id="autoclearLabel">
-                                    autoclear&NonBreakingSpace;&nbsp;
-                                </span>
-                            </label>
-                        </button>
-                        <br>
-                        <button onclick="save_darkmode();" id="autoclear-button" class="checkbox"
-                            style="all: unset; margin-top: 8px;">
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="darkmode">
-                                <input type="checkbox" id="darkmode" class="mdl-switch__input" checkbox>
-                                <span class="mdl-switch__label" id="darkmodeLabel">
-                                    Darkmode
-                                </span>
-                            </label>
-                        </button>
+                        <div class="checkboxes">
+                            <!-- Autoclear -->
+                            <div id="autoclear-button" class="switch-row">
+                                <span id="autoclearLabel" class="switch-label">autoclear</span>
+                                <md-switch id="auto-clear" onchange="save_autoclear();" aria-label="Autoclear"></md-switch>
+                            </div>
+
+                            <br>
+
+                            <!-- Darkmode -->
+                            <div id="darkmode-button" class="switch-row">
+                                <span id="darkmodeLabel" class="switch-label">Darkmode</span>
+                                <md-switch id="darkmode" onchange="save_darkmode();" aria-label="Darkmode"></md-switch>
+                            </div>
+                        </div>
                         <br><br>
                     </div>
                 </center>
@@ -345,20 +342,20 @@
                         document.getElementById("p1").style.visibility = 'visible';
                         setProgress(100);
                         var checkboxACL = document.getElementById("auto-clear");
-                        localStorage.setItem("autoclear", checkboxACL.checked);
+                        localStorage.setItem("autoclear", checkboxACL.selected);
                         setTimeout(() => {
                             setProgress(0);
                             document.getElementById("p1").style.visibility = 'hidden';
                         }, 180);
                     }
                     let checkedACL = JSON.parse(localStorage.getItem("autoclear"));
-                    document.getElementById("auto-clear").checked = checkedACL;
+                    document.getElementById("auto-clear").selected = checkedACL;
 
                     function save_darkmode() {
                         document.getElementById("p1").style.visibility = 'visible';
                         setProgress(100);
                         var darkmode = document.getElementById("darkmode");
-                        localStorage.setItem("darkmode", darkmode.checked);
+                        localStorage.setItem("darkmode", darkmode.selected);
                         setTimeout(() => {
                             setProgress(0);
                             document.getElementById("p1").style.visibility = 'hidden';
@@ -366,7 +363,7 @@
                         }, 180);
                     }
                     let darkmode = JSON.parse(localStorage.getItem("darkmode"));
-                    document.getElementById("darkmode").checked = darkmode;
+                    document.getElementById("darkmode").selected = darkmode;
 
                     function setProgress(progress) {
                         document.getElementById("p1").style.visibility = 'visible';

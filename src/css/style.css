@@ -56,6 +56,26 @@ textarea.disabled {
   border: 2.5px solid #585858 !important;
 }
 
+.settings {
+  max-width: 80%;
+}
+.checkboxes {
+  max-width: 55%;
+}
+
+.switch-row {
+  display: flex;
+  justify-content: space-between; /* Label links, Switch rechts */
+  align-items: center;
+}
+
+/* Labels */
+.switch-label {
+  font-size: 20px; /* Standardgröße, einfach ändern */
+  text-align: left;
+  flex: 1; /* sorgt dafür, dass Labels links bündig bleiben */
+}
+
 /* Allgemeine Button Styles */
 button.mdl-button {
   border-radius: 8px;
