@@ -186,7 +186,7 @@
 
                 <script>
                     //darkmode styling
-                    if (localStorage.getItem("darkmode") === "true") {
+                    function apply_darkmode() {
                         document.body.style.backgroundColor = localStorage.getItem("darkmodeBackground");
                         document.body.style.color = "white";
 
@@ -226,7 +226,11 @@
                         header.forEach(function (header) {
                             header.style.backgroundColor = "rgb(65, 110, 124)";
                         });
-                    } else {
+                    }
+
+                    function apply_lightmode() {
+                        document.body.style.backgroundColor = "white";
+                        document.body.style.color = "black";
                         disabled_inputField = document.querySelector("textarea.disabled[disabled]");
                         if (disabled_inputField) {
                             disabled_inputField.style.backgroundColor = "#7a7a7a7a";
@@ -246,6 +250,15 @@
                             header.style.backgroundColor = "#e0e0e0";
                         });
                     }
+
+                    function check_darkmode() {
+                        if (localStorage.getItem("darkmode") === "true") {
+                        apply_darkmode();
+                        } else {
+                            apply_lightmode();
+                        }
+                    }
+                    check_darkmode();
                 </script>
 
                 <!--index-->
@@ -336,12 +349,15 @@
                 <script>
                     function save_autoclear() {
                         document.getElementById("p1").style.visibility = 'visible';
-                        setProgress(100);
+                        setProgress(50);
                         var checkboxACL = document.getElementById("auto-clear");
                         localStorage.setItem("autoclear", checkboxACL.selected);
                         setTimeout(() => {
-                            setProgress(0);
-                            document.getElementById("p1").style.visibility = 'hidden';
+                            setProgress(100);
+                            setTimeout(() => {
+                                setProgress(0);
+                                document.getElementById("p1").style.visibility = 'hidden';
+                            }, 200);
                         }, 180);
                     }
                     let checkedACL = JSON.parse(localStorage.getItem("autoclear"));
@@ -349,13 +365,16 @@
 
                     function save_darkmode() {
                         document.getElementById("p1").style.visibility = 'visible';
-                        setProgress(100);
+                        setProgress(50);
                         var darkmode = document.getElementById("darkmode");
                         localStorage.setItem("darkmode", darkmode.selected);
                         setTimeout(() => {
-                            setProgress(0);
-                            document.getElementById("p1").style.visibility = 'hidden';
-                            location.reload();
+                            setProgress(100);
+                            setTimeout(() => {
+                                setProgress(0);
+                                document.getElementById("p1").style.visibility = 'hidden';
+                            }, 200);
+                            check_darkmode();
                         }, 180);
                     }
                     let darkmode = JSON.parse(localStorage.getItem("darkmode"));
