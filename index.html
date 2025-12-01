@@ -89,9 +89,26 @@
     .errPrompt {
         background-color: #252525;
     }
+
+    .indexFade {
+        animation: fadeIn 0.45s ease-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            filter: blur(2px);
+            transform: scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+    }
 </style>
 
-<body onload="sessionStorage.setItem('ctc', '0')">
+<body onload="sessionStorage.setItem('ctc', '0')" style="transition: 0.4s ease-in-out;">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -119,7 +136,7 @@
         </div>
         <main class="mdl-layout__content">
             <div id="p1" class="mdl-progress mdl-js-progress" style="visibility: hidden; width: 100%;"></div>
-            <div class="page-content">
+            <div class="page-content indexFade">
                 <script id="localScript0"></script>
                 <script id="localScript1"></script>
                 <script id="localScript2"></script>
@@ -131,7 +148,7 @@
                 <script id="localScript8"></script>
                 <script id="localScript9"></script>
                 <center>
-                    <div id="index.html" class="section">
+                    <div id="index.html" class="section indexFade">
                         <div id="activatePrompt"></div><br>
                         <!--hauptcontent von msg-->
                         <div class="cpinp">
@@ -161,7 +178,7 @@
                         </md-filled-button>
                         <br>
                     </div>
-                    <div id="settings.html" class="settings section hidden">
+                    <div id="settings.html" class="settings section indexFade hidden">
                         <!--einstellungen für USER-->
                         <br><br><br><br><br><br><br>
                         <div class="checkboxes">
