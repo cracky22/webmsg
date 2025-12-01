@@ -21,6 +21,11 @@ button.clear {
   -webkit-tap-highlight-color: transparent; /* Touch-Highlight deaktivieren */
 }
 
+button {
+  border: none!important;
+  border-radius: 20px!important;
+}
+
 /* Textarea Styles */
 textarea.inputfield {
   height: 210px;
