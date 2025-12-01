@@ -24,8 +24,8 @@ button.clear {
 /* Textarea Styles */
 textarea.inputfield {
   height: 210px;
-  max-width: 100%;
-  border: 2.5px solid rgb(63, 81, 181);
+  max-width: 98%;
+  border: 3px solid rgb(63, 81, 181)!important;
   border-radius: 8px;
   font-weight: bold;
   outline: none;
