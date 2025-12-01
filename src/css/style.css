@@ -3,10 +3,11 @@
   /* Generated from Material Theme Builder Figma plugin
      or `material-color-utilities`. */
   --md-sys-color-primary: #006A6A;
-  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-on-primary: #ffffff;
   --md-sys-color-primary-container: #6FF7F6;
   --md-sys-color-on-primary-container: #002020;
   --md-ref-typeface-plain: system-ui;
+  font-size: 18px;
 }
 
 /* Usage in custom components */
@@ -40,14 +41,7 @@ div.cpinp {
 button.clear {
   float: right;
   font-weight: bold;
-  height: 35px !important;
-  width: 80px !important;
   -webkit-tap-highlight-color: transparent; /* Touch-Highlight deaktivieren */
-}
-
-button {
-  border: none!important;
-  border-radius: 20px!important;
 }
 
 /* Textarea Styles */

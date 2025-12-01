@@ -135,10 +135,10 @@
                         <div id="activatePrompt"></div><br><br>
                         <!--hauptcontent von msg-->
                         <div class="cpinp">
-                            <button onclick="do_cleanup();" id="clearButton" style="color: #0a84ff!important;"
-                                class="clear button">
-                                clear
-                            </button>
+                            <md-elevated-button onclick="do_cleanup();" id="clearButton" style="color: #0a84ff!important; transform: translateX(+130px);" 
+                                class="clear">
+                                Clear
+                            </md-elevated-button>
                             <br><br>
                             <center>
                                 <textarea type="text" id="inputfield" class="inputfield mdl-textfield__input"
@@ -150,14 +150,15 @@
                         </div>
                         <br><br>
 
-                        <button onclick="encrypt_message();" id="encrypt_button"
-                            style="background-color: #0a84ff!important; color: white!important;" class="button">
+                        <md-filled-button onclick="encrypt_message();" id="encrypt_button"
+                            style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
                             encrypt
-                        </button>
-                        <button onclick="decrypt_message();" id="decrypt_button"
-                            style="background-color: #0a84ff!important; color: white!important;" class="button">
+                        </md-filled-button>
+                        
+                        <md-filled-button onclick="decrypt_message();" id="decrypt_button"
+                            style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
                             decrypt
-                        </button>
+                        </md-filled-button>
                         <br>
                     </div>
                     <div id="settings.html" class="settings section hidden">
