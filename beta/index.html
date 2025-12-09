@@ -113,27 +113,27 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title" id="masterTitle" style="font-family: 'Rubik';">
-                    msg.web
+                    msg.web <small><small>[BETA]</small></small>
                 </span>
                 <div class="mdl-layout-spacer"></div>
-                <a class="mdl-navigation__link" id="settings" onclick="settings();"><i
+                <a class="mdl-navigation__link" id="settings" onclick="hf(); settings();"><i
                         class="material-icons">settings</i></a>
-                <a class="mdl-navigation__link" id="home" onclick="index();"><i class="material-icons">home</i></a>
+                <a class="mdl-navigation__link" id="home" onclick="hf(); index();"><i class="material-icons">home</i></a>
             </div>
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title" id="menuTitle">Menü</span>
             <nav class="mdl-navigation">
-                <button onclick="settings();" id="settingsButton" style="color: #0a84ff!important;"
+                <button onclick="hf(); settings();" id="settingsButton" style="color: #0a84ff!important;"
                     class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Einstellungen
                 </button>
-                <button onclick="index();" id="homeButton" style="color: #0a84ff!important;"
+                <button onclick="hf(); index();" id="homeButton" style="color: #0a84ff!important;"
                     class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     HOME
                 </button>
                 <br>
-                <a class="mdl-navigation__link" href="/"
+                <a class="mdl-navigation__link" href="/" onclick="hf();"
                     style="color: #0a84ff!important;">zurück zur Stable Version</a>
             </nav>
         </div>
@@ -155,7 +155,7 @@
                         <div id="activatePrompt"></div><br>
                         <!--hauptcontent von msg-->
                         <div class="cpinp">
-                            <md-elevated-button onclick="do_cleanup();" id="clearButton" style="color: #0a84ff!important; transform: translateX(+130px);" 
+                            <md-elevated-button onclick="hf(); do_cleanup();" id="clearButton" style="color: #0a84ff!important; transform: translateX(+130px);" 
                                 class="clear">
                                 clear
                             </md-elevated-button>
@@ -170,12 +170,12 @@
                         </div>
                         <br><br>
 
-                        <md-filled-button onclick="encrypt_message();" id="encrypt_button"
+                        <md-filled-button onclick="hf(); encrypt_message();" id="encrypt_button"
                             style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
                             encrypt
                         </md-filled-button>
                         
-                        <md-filled-button onclick="decrypt_message();" id="decrypt_button"
+                        <md-filled-button onclick="hf(); decrypt_message();" id="decrypt_button"
                             style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
                             decrypt
                         </md-filled-button>
@@ -188,7 +188,7 @@
                             <!-- Autoclear -->
                             <div id="autoclear-button" class="switch-row">
                                 <span id="autoclearLabel" class="switch-label">autoclear</span>
-                                <md-switch id="auto-clear" onchange="save_autoclear();" aria-label="Autoclear"></md-switch>
+                                <md-switch id="auto-clear" onchange="hf(); save_autoclear();" aria-label="Autoclear"></md-switch>
                             </div>
 
                             <br>
@@ -196,7 +196,7 @@
                             <!-- Darkmode -->
                             <div id="darkmode-button" class="switch-row">
                                 <span id="darkmodeLabel" class="switch-label">Darkmode</span>
-                                <md-switch id="darkmode" onchange="save_darkmode();" aria-label="Darkmode"></md-switch>
+                                <md-switch id="darkmode" onchange="hf(); save_darkmode();" aria-label="Darkmode"></md-switch>
                             </div>
                         </div>
                         <br><br>

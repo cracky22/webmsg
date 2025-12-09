@@ -305,3 +305,7 @@ function findInvalidCharacters(str) {
     console.log("findInvalidChars: INVALID CHARS: " + invalidChars);
   }
 }
+
+function hf() {
+  navigator.vibrate(15);
+}
