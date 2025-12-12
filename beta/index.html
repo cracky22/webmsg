@@ -139,6 +139,10 @@
         </div>
         <main class="mdl-layout__content">
             <div id="p1" class="mdl-progress mdl-js-progress" style="visibility: hidden; width: 100%;"></div>
+            <div id="msg-snackbar" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+            </div>
             <div class="page-content indexFade">
                 <script id="localScript0"></script>
                 <script id="localScript1"></script>
@@ -279,6 +283,16 @@
                         }
                     }
                     check_darkmode();
+
+                    ///snackbar function 
+                    function show_snackbar(message, timeout = 2000) {
+                        var snackbarContainer = document.querySelector('#msg-snackbar');
+                        var data = {
+                            message: message,
+                            timeout: timeout,
+                        };
+                        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                    }
                 </script>
 
                 <!--index-->
@@ -298,7 +312,7 @@
                         localStorage.setItem("rVal", "set");
                         localStorage.setItem("autoclear", "false");
                         localStorage.setItem("Darkmode", "true");
-                        localStorage.setItem("darkmodeBackground", "#25282b");
+                        localStorage.setItem("darkmodeBackground", "#1c1b1d");
                     }
 
                     function settings() {

@@ -2,9 +2,9 @@
 :root {
   /* Generated from Material Theme Builder Figma plugin
      or `material-color-utilities`. */
-  --md-sys-color-primary: #006A6A;
+  --md-sys-color-primary: #2e4a4a;
   --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #6FF7F6;
+  /*--md-sys-color-primary-container: #6FF7F6;*/
   --md-sys-color-on-primary-container: #002020;
   --md-ref-typeface-plain: system-ui;
   font-size: 18px;
@@ -26,7 +26,7 @@ div.mdl-layout__header-row,
 div.mdl-layout__drawer-button,
 header.mdl-layout__header,
 header.is-casting-shadow {
-  background-color: #006A6A;
+  background-color: #2e4a4a;
   font-family: 'Rubik';
   font-weight: 550;
 }
@@ -48,7 +48,7 @@ button.clear {
 textarea.inputfield {
   height: 210px;
   max-width: 97%;
-  border: 3px solid rgb(63, 81, 181)!important;
+  border: 3px solid #015454!important;
   border-radius: 20px;
   padding-left: 5px!important;
   padding-right: 5px;
@@ -62,7 +62,7 @@ textarea.inputfield {
 }
 
 textarea:focus {
-  border: 3px solid rgb(88, 109, 228) !important;
+  border: 3px solid #028787 !important;
 }
 
 textarea.inputstyle {
@@ -162,4 +162,12 @@ h5.changelog {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding-top: 8px;
   padding-bottom: 2px;
+}
+
+
+.mdl-snackbar {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  max-width: 90%;
+  margin-left: 5%;
 }
