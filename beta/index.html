@@ -108,7 +108,7 @@
     }
 </style>
 
-<body onload="sessionStorage.setItem('ctc', '0')" style="transition: 0.4s ease-in-out;">
+<body onload="sessionStorage.setItem('ctc', '0')">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" onclick="hf();">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -362,6 +362,9 @@
                                 event.preventDefault();
                             }
                         });
+                        setTimeout(() => {
+                            document.body.style.transition = "0.4s ease-in-out";
+                        }, 500);    
                     });
                 </script>
 
