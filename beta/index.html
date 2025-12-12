@@ -416,6 +416,7 @@
 
                     function setProgress(progress) {
                         document.getElementById("p1").style.visibility = 'visible';
+                        document.querySelector(".progressbar.bar.bar1").style.backgroundColor = "#0aa1a1";
                         var progressBar = document.querySelector('#p1');
                         if (progressBar && progressBar.MaterialProgress) {
                             progressBar.MaterialProgress.setProgress(progress);
