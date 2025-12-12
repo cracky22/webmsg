@@ -123,15 +123,13 @@
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title" id="menuTitle">Menü</span>
-            <nav class="mdl-navigation">
-                <button onclick="hf(); settings();" id="settingsButton" style="color: #0a84ff!important;"
-                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            <nav class="mdl-navigation" style="max-width: 90%; margin-left: 8px;">
+                <md-outlined-button onclick="hf(); settings();" id="settingsButton">
                     Einstellungen
-                </button>
-                <button onclick="hf(); index();" id="homeButton" style="color: #0a84ff!important;"
-                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                    HOME
-                </button>
+                </md-outlined-button>
+                <md-outlined-button onclick="hf(); index();" id="homeButton">
+                    Home
+                </md-outlined-button>
                 <br>
                 <a class="mdl-navigation__link" href="/webmsg/" onclick="hf();"
                     style="color: #0a84ff!important;">zurück zur Stable Version</a>
