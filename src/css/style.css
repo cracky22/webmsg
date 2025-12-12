@@ -42,6 +42,7 @@ button.clear {
   float: right;
   font-weight: bold;
   -webkit-tap-highlight-color: transparent; /* Touch-Highlight deaktivieren */
+  color: white!important;
 }
 
 /* Textarea Styles */

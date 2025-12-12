@@ -6,6 +6,9 @@
   --md-sys-color-on-primary: #ffffff;
   /*--md-sys-color-primary-container: #6FF7F6;*/
   --md-sys-color-on-primary-container: #002020;
+  --md-filled-tonal-button-container-color: #547a7a;
+  --md-filled-tonal-button-container-shape: 10px;
+  --md-tonal-button: #6b3636;
   --md-ref-typeface-plain: system-ui;
   font-size: 18px;
 }
@@ -42,6 +45,7 @@ button.clear {
   float: right;
   font-weight: bold;
   -webkit-tap-highlight-color: transparent; /* Touch-Highlight deaktivieren */
+  color: white!important;
 }
 
 /* Textarea Styles */
