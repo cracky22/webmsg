@@ -333,20 +333,6 @@
                         document.getElementById("masterTitle").innerHTML = 'msg.web <small><small>[BETA]</small></small>';
                     }
 
-                    if (localStorage.getItem("user") === "DEVELOPER") {
-                        document.addEventListener("visibilitychange", function () {
-                            if (document.hidden) {
-                                disableElements();
-
-                            } else if (!document.hidden) {
-                                document.getElementById('p1').classList.add('mdl-progress__indeterminate');
-                                document.getElementById('p1').style.visibility = 'visible';
-                                enableDisabledElements();
-                                checkInternetConnection('https://cracky.ddns.net/?checkConnectionStatus');
-                            }
-                        });
-                    }
-
                     function enableDisabledElements() {
                         const elements = document.querySelectorAll('button:disabled, textarea:disabled');
                         elements.forEach(element => {
