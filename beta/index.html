@@ -109,7 +109,7 @@
 </style>
 
 <body onload="sessionStorage.setItem('ctc', '0')" style="transition: 0.4s ease-in-out;">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" onclick="hf();">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title" id="masterTitle" style="font-family: 'Rubik';">
@@ -190,7 +190,7 @@
                             <!-- Autoclear -->
                             <div id="autoclear-button" class="switch-row">
                                 <span id="autoclearLabel" class="switch-label">autoclear</span>
-                                <md-switch id="auto-clear" onchange="hf(); save_autoclear();" aria-label="Autoclear"></md-switch>
+                                <md-switch id="auto-clear" onchange="hf(80); save_autoclear();" aria-label="Autoclear"></md-switch>
                             </div>
 
                             <br>
@@ -198,7 +198,7 @@
                             <!-- Darkmode -->
                             <div id="darkmode-button" class="switch-row">
                                 <span id="darkmodeLabel" class="switch-label">Darkmode</span>
-                                <md-switch id="darkmode" onchange="hf(); save_darkmode();" aria-label="Darkmode"></md-switch>
+                                <md-switch id="darkmode" onchange="hf(80); save_darkmode();" aria-label="Darkmode"></md-switch>
                             </div>
                         </div>
                         <br><br>
