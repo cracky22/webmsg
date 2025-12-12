@@ -317,7 +317,7 @@
                         document.getElementById("settingsButton").style.display = 'block';
                         document.getElementById("home").style.display = 'none';
                         document.getElementById("settings").style.display = 'block';
-                        document.getElementById("masterTitle").innerText = 'msg.web';
+                        document.getElementById("masterTitle").innerHTML = 'msg.web <small><small>[BETA]</small></small>';
                     }
 
                     if (localStorage.getItem("user") === "DEVELOPER") {
