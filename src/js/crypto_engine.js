@@ -25,6 +25,7 @@ function encrypt_message() {
         encrypted_message = sessionStorage.getItem("e");
         encrypted_message_6 = utf8ToBase64(encrypted_message);
         document.getElementById("inputfield").value = encrypted_message_6;
+        hf(80);
         setProgress(100);
 
         //encryption done, check if error occured
@@ -154,6 +155,7 @@ function decrypt_message() {
         setProgress(75);
 
         document.getElementById("inputfield").value = decrypted_message;
+        hf(80);
         setProgress(100);
 
         setTimeout(() => {
@@ -303,5 +305,13 @@ function findInvalidCharacters(str) {
   let invalidChars = str.match(/[\x00-\x08\x0E-\x1F\x80-\xFF]/g);
   if (invalidChars) {
     console.log("findInvalidChars: INVALID CHARS: " + invalidChars);
+  }
+}
+
+function hf(value) {
+  if (value) {
+    navigator.vibrate(value);
+  } else {
+    navigator.vibrate(15);
   }
 }

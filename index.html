@@ -108,37 +108,39 @@
     }
 </style>
 
-<body onload="sessionStorage.setItem('ctc', '0')" style="transition: 0.4s ease-in-out;">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<body onload="sessionStorage.setItem('ctc', '0')">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" onclick="hf();">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title" id="masterTitle" style="font-family: 'Rubik';">
                     msg.web
                 </span>
                 <div class="mdl-layout-spacer"></div>
-                <a class="mdl-navigation__link" id="settings" onclick="settings();"><i
+                <a class="mdl-navigation__link" id="settings" onclick="hf(); settings();"><i
                         class="material-icons">settings</i></a>
-                <a class="mdl-navigation__link" id="home" onclick="index();"><i class="material-icons">home</i></a>
+                <a class="mdl-navigation__link" id="home" onclick="hf(); index();"><i class="material-icons">home</i></a>
             </div>
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title" id="menuTitle">Menü</span>
-            <nav class="mdl-navigation">
-                <button onclick="settings();" id="settingsButton" style="color: #0a84ff!important;"
-                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            <nav class="mdl-navigation" style="max-width: 90%; margin-left: 8px;">
+                <md-outlined-button onclick="hf(); settings();" id="settingsButton">
                     Einstellungen
-                </button>
-                <button onclick="index();" id="homeButton" style="color: #0a84ff!important;"
-                    class="menub mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                    HOME
-                </button>
+                </md-outlined-button>
+                <md-outlined-button onclick="hf(); index();" id="homeButton">
+                    Home
+                </md-outlined-button>
                 <br>
-                <a class="mdl-navigation__link" href="/webmsg/beta/"
+                <a class="mdl-navigation__link" href="/webmsg/beta/" onclick="hf();"
                     style="color: #0a84ff!important;">zur Beta Version</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
             <div id="p1" class="mdl-progress mdl-js-progress" style="visibility: hidden; width: 100%;"></div>
+            <div id="msg-snackbar" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+            </div>
             <div class="page-content indexFade">
                 <script id="localScript0"></script>
                 <script id="localScript1"></script>
@@ -155,10 +157,10 @@
                         <div id="activatePrompt"></div><br>
                         <!--hauptcontent von msg-->
                         <div class="cpinp">
-                            <md-elevated-button onclick="do_cleanup();" id="clearButton" style="color: #0a84ff!important; transform: translateX(+130px);" 
-                                class="clear">
+                            <md-filled-tonal-button onclick="hf(); do_cleanup();"
+                            id="clearButton" style="transform: translateX(+130px);" class="clear">
                                 clear
-                            </md-elevated-button>
+                            </md-filled-tonal-button>
                             <br>
                             <center>
                                 <textarea type="text" id="inputfield" class="inputfield mdl-textfield__input"
@@ -170,13 +172,13 @@
                         </div>
                         <br><br>
 
-                        <md-filled-button onclick="encrypt_message();" id="encrypt_button"
-                            style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
+                        <md-filled-button onclick="hf(); encrypt_message();" id="encrypt_button"
+                            style="color: white!important; font-weight: bold;">
                             encrypt
                         </md-filled-button>
                         
-                        <md-filled-button onclick="decrypt_message();" id="decrypt_button"
-                            style="background-color: #0a84ff!important; color: white!important; font-weight: bold;">
+                        <md-filled-button onclick="hf(); decrypt_message();" id="decrypt_button"
+                            style="color: white!important; font-weight: bold;">
                             decrypt
                         </md-filled-button>
                         <br>
@@ -188,7 +190,7 @@
                             <!-- Autoclear -->
                             <div id="autoclear-button" class="switch-row">
                                 <span id="autoclearLabel" class="switch-label">autoclear</span>
-                                <md-switch id="auto-clear" onchange="save_autoclear();" aria-label="Autoclear"></md-switch>
+                                <md-switch id="auto-clear" onchange="hf(80); save_autoclear();" aria-label="Autoclear"></md-switch>
                             </div>
 
                             <br>
@@ -196,7 +198,7 @@
                             <!-- Darkmode -->
                             <div id="darkmode-button" class="switch-row">
                                 <span id="darkmodeLabel" class="switch-label">Darkmode</span>
-                                <md-switch id="darkmode" onchange="save_darkmode();" aria-label="Darkmode"></md-switch>
+                                <md-switch id="darkmode" onchange="hf(80); save_darkmode();" aria-label="Darkmode"></md-switch>
                             </div>
                         </div>
                         <br><br>
@@ -259,6 +261,7 @@
                         inputField = document.querySelector("textarea.inputfield");
                         if (inputField) {
                             inputField.style.backgroundColor = "rgb(230, 230, 230)";
+                            inputField.style.color = "black";
                         }
 
                         header = document.querySelectorAll("h3.header");
@@ -279,6 +282,16 @@
                         }
                     }
                     check_darkmode();
+
+                    ///snackbar function 
+                    function show_snackbar(message, timeout = 2000) {
+                        var snackbarContainer = document.querySelector('#msg-snackbar');
+                        var data = {
+                            message: message,
+                            timeout: timeout,
+                        };
+                        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                    }
                 </script>
 
                 <!--index-->
@@ -298,7 +311,7 @@
                         localStorage.setItem("rVal", "set");
                         localStorage.setItem("autoclear", "false");
                         localStorage.setItem("Darkmode", "true");
-                        localStorage.setItem("darkmodeBackground", "#25282b");
+                        localStorage.setItem("darkmodeBackground", "#1c1b1d");
                     }
 
                     function settings() {
@@ -317,21 +330,7 @@
                         document.getElementById("settingsButton").style.display = 'block';
                         document.getElementById("home").style.display = 'none';
                         document.getElementById("settings").style.display = 'block';
-                        document.getElementById("masterTitle").innerText = 'msg.web';
-                    }
-
-                    if (localStorage.getItem("user") === "DEVELOPER") {
-                        document.addEventListener("visibilitychange", function () {
-                            if (document.hidden) {
-                                disableElements();
-
-                            } else if (!document.hidden) {
-                                document.getElementById('p1').classList.add('mdl-progress__indeterminate');
-                                document.getElementById('p1').style.visibility = 'visible';
-                                enableDisabledElements();
-                                checkInternetConnection('https://cracky.ddns.net/?checkConnectionStatus');
-                            }
-                        });
+                        document.getElementById("masterTitle").innerHTML = 'msg.web';
                     }
 
                     function enableDisabledElements() {
@@ -341,6 +340,7 @@
                         });
                         inputfield = document.getElementById("inputfield");
                         inputfield.classList.add("inputstyle");
+
                         inputfield.classList.remove("disabled");
                         document.getElementById('p1').style.visibility = 'hidden';
                         document.getElementById('p1').classList.remove('mdl-progress__indeterminate');
@@ -362,6 +362,9 @@
                                 event.preventDefault();
                             }
                         });
+                        setTimeout(() => {
+                            document.body.style.transition = "0.4s ease-in-out";
+                        }, 500);    
                     });
                 </script>
 
@@ -402,6 +405,7 @@
 
                     function setProgress(progress) {
                         document.getElementById("p1").style.visibility = 'visible';
+                        document.querySelector(".progressbar.bar.bar1").style.backgroundColor = "#0aa1a1";
                         var progressBar = document.querySelector('#p1');
                         if (progressBar && progressBar.MaterialProgress) {
                             progressBar.MaterialProgress.setProgress(progress);
