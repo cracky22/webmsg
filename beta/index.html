@@ -376,6 +376,7 @@
                         var checkboxACL = document.getElementById("auto-clear");
                         localStorage.setItem("autoclear", checkboxACL.selected);
                         setTimeout(() => {
+                            checkboxACL.selected ? show_snackbar("autoclear aktiviert", 2000) : show_snackbar("autoclear deaktiviert", 2000);
                             setProgress(100);
                             setTimeout(() => {
                                 setProgress(0);
@@ -392,6 +393,7 @@
                         var darkmode = document.getElementById("darkmode");
                         localStorage.setItem("darkmode", darkmode.selected);
                         setTimeout(() => {
+                            darkmode.selected ? show_snackbar("Darkmode aktiviert", 2000) : show_snackbar("Darkmode deaktiviert", 2000);
                             setProgress(100);
                             setTimeout(() => {
                                 setProgress(0);
