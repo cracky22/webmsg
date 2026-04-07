@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./src/mdl/mdl-style.css">
     <script src="./src/mdl/mdl-script.js"></script>
     <script src="./src/js/crypto_engine.js"></script>
+    <script src="./src/js/main.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@material/web/all.js/+esm"></script>
 </head>
 
@@ -126,10 +127,10 @@
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title" id="menuTitle">Menü</span>
             <nav class="mdl-navigation" style="max-width: 90%; margin-left: 8px;">
-                <md-outlined-button onclick="hf(); settings();" id="settingsButton">
+                <md-outlined-button onclick="hf(); hide_menu(); setTimeout(() => {settings();}, 300);" id="settingsButton">
                     Einstellungen
                 </md-outlined-button>
-                <md-outlined-button onclick="hf(); index();" id="homeButton">
+                <md-outlined-button onclick="hf(); hide_menu(); setTimeout(() => {index();}, 300);" id="homeButton">
                     Home
                 </md-outlined-button>
                 <br>
